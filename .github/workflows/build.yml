@@ -19,19 +19,22 @@ jobs:
           curl -L -O -J https://libstock.mikroe.com/projects/download/1862/0/1862_mikrobootloader_v2.8.0.0.zip &&^
           7z.exe x 1862_mikrobootloader_v2.8.0.0.zip &&^
           cd 1862_mikrobootloader_v2.8.0.0 &&^
-          7z.exe x 1558535139_mikrobootloader_other_other.rar
+          7z.exe x 1558535139_mikrobootloader_other_other.rar &&^
+          
+      - name: rename
+        shell: bash
+        run: mv "1862_mikrobootloader_v2.8.0.0/USB HID BootLoader" "1862_mikrobootloader_v2.8.0.0/USB_HID_BootLoader"
           
       - name: Archive Release
         uses: thedoctor0/zip-release@master
         with:
           type: 'zip'
-          directory: >
-            "1862_mikrobootloader_v2.8.0.0/USB HID BootLoader"
+          directory: "1862_mikrobootloader_v2.8.0.0/USB_HID_BootLoader"
           filename: "${{ env.targetZip }}"
           
       - name: Release prebuilt
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "1862_mikrobootloader_v2.8.0.0/USB HID BootLoader/${{ env.targetZip }}"
+          artifacts: "1862_mikrobootloader_v2.8.0.0/USB_HID_BootLoader/${{ env.targetZip }}"
           allowUpdates: true
           token: ${{ secrets.GITHUB_TOKEN }}
