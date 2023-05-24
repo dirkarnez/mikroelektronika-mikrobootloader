@@ -25,15 +25,12 @@ jobs:
         uses: thedoctor0/zip-release@master
         with:
           type: 'zip'
-          directory: '1862_mikrobootloader_v2.8.0.0/USB HID BootLoader'
-          path: |
-            'mikroBootloader USB HID.exe'
-            'USB HID mikroBootloader Manual.pdf'
+          directory: "1862_mikrobootloader_v2.8.0.0/USB HID BootLoader"
           filename: "${{ env.targetZip }}"
           
       - name: Release prebuilt
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "${{ env.targetZip }}"
+          artifacts: "1862_mikrobootloader_v2.8.0.0/USB HID BootLoader/${{ env.targetZip }}"
           allowUpdates: true
           token: ${{ secrets.GITHUB_TOKEN }}
