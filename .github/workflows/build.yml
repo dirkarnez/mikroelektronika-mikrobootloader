@@ -25,7 +25,8 @@ jobs:
         uses: thedoctor0/zip-release@master
         with:
           type: 'zip'
-          directory: "'1862_mikrobootloader_v2.8.0.0/USB HID BootLoader'"
+          directory: >
+            "1862_mikrobootloader_v2.8.0.0/USB HID BootLoader"
           filename: "${{ env.targetZip }}"
           
       - name: Release prebuilt
